@@ -1,0 +1,21 @@
+
+@import '~@carbon/themes/scss/themes';
+// Use the gray 100 theme
+$carbon--theme: $carbon--theme--g100;
+
+
+
+@include carbon--theme();
+$active-ui: #f4f4f4;
+$interactive-03: #262626;
+
+// @import "carbon-components/scss/globals/scss/styles";
+// .bx--side-nav{
+//     background-color: #262626;
+// }
+
+$feature-flags: (
+  grid-columns-16: true
+);
+
+@import 'carbon-components/scss/globals/scss/styles';

@@ -1,0 +1,20 @@
+API:
+- Implement other methods for songs
+    - /by-artist/ GET (Get songs by artist) @done
+	- /by-album/  GET (Get songs by album) @done
+	- /			  POST (Add song by body) @done
+	- /by-id/     GET (Get songs by ID) @done
+	- /by-id/     PATCH (Modify Songs by ID) @done
+	- /by-id/     DELETE (Delete songs by ID) @done
+- Start out on api documentation using swagger\
+    https://blog.cloudboost.io/adding-swagger-to-existing-node-js-project-92a6624b855b
+- Test the songs route
+    Can use the following json object for testing:
+    {
+	"name" : "Sunflower DEL3",
+	"album" : "Spider-Man: Into the Spider-Verse",
+	"artist" : "Post Malone & Swae Lee",
+	"duration" : 158,
+	"lyrics" : "[Intro: Swae Lee]\nAyy, ayy, ayy, ayy (Ooh)\nOoh, ooh, ooh, ooh (Ooh)\nAyy, ayy\nOoh, ooh, ooh, ooh\n\n[Verse 1: Swae Lee]\nNeedless to say, I keep in check\nShe was a bad-bad, nevertheless (Yeah)\nCrash at my place, baby, you're a wreck (Wreck)\nNeedless to say, I'm keeping in check\nShe was a bad-bad, nevertheless\nCallin' it quits now, baby, I'm a wreck\nCrash at my place, baby, you're a wreck\nThinkin' in a bad way, losin' your grip\nScreamin' at my face, baby, don't trip\nSomeone took a big L, don't know how that felt\nLookin' at you sideways, party on tilt\nOoh-ooh, some things you just can't refuse\nShe wanna ride me like a cruise and I'm not tryna lose\n\n[Chorus: Swae Lee]\nThen you're left in the dust, unless I stuck by ya\nYou're a sunflower, I think your love would be too much\nOr you'll be left in the dust, unless I stuck by ya\nYou're the sunflower, you're the sunflower\n\n[Verse 2: Post Malone]\nEvery time I'm leavin' on ya (Ooh)\nYou don't make it easy, no (No, no)\nWish I could be there for ya (Ooh)\nGive me a reason to, oh (Oh)\nEvery time I'm walkin' out (Oh)\nI can hear you tellin' me to turn around (Oh, oh)\nFightin' for my trust and you won't back down (No)\nEven if we gotta risk it all right now, oh (Now)\nI know you're scared of the unknown (Known)\nYou don't wanna be alone (Alone)\nI know I always come and go (And go)\nBut it's out of my control\n\n[Chorus: Post Malone]\nAnd you'll be left in the dust, unless I stuck by ya\nYou're the sunflower, I think your love would be too much\nOr you'll be left in the dust, unless I stuck by ya\nYou're the sunflower, you're the sunflower (Yeah)",
+	"lyrics_source" : "Genius"
+    }

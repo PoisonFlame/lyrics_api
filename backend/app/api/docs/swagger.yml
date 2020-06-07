@@ -1,0 +1,220 @@
+openapi: "3.0.0"
+info:
+  description: "This is an api used to fetch lyrics for songs. This can be done through many method such as by name, by artist, by album etc."
+  version: "1.0.0"
+  title: "Lyrics API"
+  contact:
+    name: Rudra Sharma
+    email: "lyricsapi@rpsh.me"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+paths:
+  /songs:
+    get:
+      tags:
+        - "Songs"
+      summary: "Used to get all the songs and their lyrics"
+      description: ""
+      responses:
+        201:
+          description: Success
+        404:
+          description: Not found
+        500:
+          description: Failed to fetch songs
+    post:
+      tags:
+        - "Songs"
+      summary: "Used to add a song with their lyrics"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - album
+                - artist
+                - duration
+                - lyrics
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                album:
+                  type: string
+                artist:
+                  type: string
+                genre:
+                  type: string
+                duration: 
+                  type: integer
+                lyrics:
+                  type: string
+                lyrics_source:
+                  type: string
+              example:
+                name: Sunflower
+                album: 'Spider-Man: Into the Spider-Verse'
+                artist: 'Post Malone & Swae Lee'
+                duration: 158
+                lyrics: "[Intro: Swae Lee]\nAyy, ayy, ayy, ayy (Ooh)\nOoh, ooh, ooh, ooh (Ooh)\nAyy, ayy\nOoh, ooh, ooh, ooh\n\n[Verse 1: Swae Lee]\nNeedless to say, I keep in check\nShe was a bad-bad, nevertheless (Yeah)\nCrash at my place, baby, you're a wreck (Wreck)\nNeedless to say, I'm keeping in check\nShe was a bad-bad, nevertheless\nCallin' it quits now, baby, I'm a wreck\nCrash at my place, baby, you're a wreck\nThinkin' in a bad way, losin' your grip\nScreamin' at my face, baby, don't trip\nSomeone took a big L, don't know how that felt\nLookin' at you sideways, party on tilt\nOoh-ooh, some things you just can't refuse\nShe wanna ride me like a cruise and I'm not tryna lose\n\n[Chorus: Swae Lee]\nThen you're left in the dust, unless I stuck by ya\nYou're a sunflower, I think your love would be too much\nOr you'll be left in the dust, unless I stuck by ya\nYou're the sunflower, you're the sunflower\n\n[Verse 2: Post Malone]\nEvery time I'm leavin' on ya (Ooh)\nYou don't make it easy, no (No, no)\nWish I could be there for ya (Ooh)\nGive me a reason to, oh (Oh)\nEvery time I'm walkin' out (Oh)\nI can hear you tellin' me to turn around (Oh, oh)\nFightin' for my trust and you won't back down (No)\nEven if we gotta risk it all right now, oh (Now)\nI know you're scared of the unknown (Known)\nYou don't wanna be alone (Alone)\nI know I always come and go (And go)\nBut it's out of my control\n\n[Chorus: Post Malone]\nAnd you'll be left in the dust, unless I stuck by ya\nYou're the sunflower, I think your love would be too much\nOr you'll be left in the dust, unless I stuck by ya\nYou're the sunflower, you're the sunflower (Yeah)"
+                lyrics_source: Genius
+      responses:
+       201:
+         description: Success
+       404:
+         description: Not found
+       500:
+         description: Failed to fetch song info
+  /songs/by-name/{songName}:
+    get:
+      tags:
+        - "Songs"
+      summary: "Used to get a song by its name"
+      parameters: 
+        - in: path
+          name: songName
+          required: true
+          description: This is the name of a song. The song name is case insensitive.
+          schema:
+            type: string
+      responses:
+       201:
+         description: Success
+       404:
+         description: Not found
+       500:
+         description: Failed to fetch song info
+  /songs/by-album/{albumName}:
+    get:
+      tags:
+        - "Songs"
+      summary: "Used to get a list of songs by its album name"
+      parameters: 
+        - in: path
+          name: albumName
+          required: true
+          description: This is the name of album of a particular subset of songs. The album name is case insensitive.
+          schema:
+            type: string
+      responses:
+       201:
+         description: Success
+       404:
+         description: Not found
+       500:
+         description: Failed to fetch song info
+  /songs/by-artist/{artistName}:
+    get:
+      tags:
+        - "Songs"
+      summary: "Used to get a list of song by its artist name"
+      parameters: 
+        - in: path
+          name: artistName
+          required: true
+          description: This is the name of artist of a particular subset of songs. The artist name is case insensitive.
+          schema:
+            type: string
+      responses:
+       201:
+         description: Success
+       404:
+         description: Not found
+       500:
+         description: Failed to fetch song info
+  /songs/by-id/{songId}:
+    get:
+      tags:
+        - "Songs"
+      summary: "Used to get a song by its id"
+      parameters: 
+        - in: path
+          name: songId
+          required: true
+          description: This field is a string that matches the song id. A song id is a alphanumerical string that is of length 12 or 24. 
+          schema:
+            type: string
+      responses:
+       201:
+         description: Success
+       404:
+         description: Not found
+       500:
+         description: Failed to fetch song info
+    patch:
+      tags:
+        - "Songs"
+      summary: "Used to update a song based on its id"
+      parameters: 
+        - in: path
+          name: songId
+          required:  true
+          description: This field is a string that matches the song id. A song id is a alphanumerical string that is of length 12 or 24. 
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - album
+                - artist
+                - duration
+                - lyrics
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                album:
+                  type: string
+                artist:
+                  type: string
+                genre:
+                  type: string
+                duration: 
+                  type: integer
+                lyrics:
+                  type: string
+                lyrics_source:
+                  type: string
+              example:
+                name: Sunflower
+                album: 'Spider-Man: Into the Spider-Verse'
+                artist: 'Post Malone & Swae Lee'
+                duration: 158
+                lyrics: "[Intro: Swae Lee]\nAyy, ayy, ayy, ayy (Ooh)\nOoh, ooh, ooh, ooh (Ooh)\nAyy, ayy\nOoh, ooh, ooh, ooh\n\n[Verse 1: Swae Lee]\nNeedless to say, I keep in check\nShe was a bad-bad, nevertheless (Yeah)\nCrash at my place, baby, you're a wreck (Wreck)\nNeedless to say, I'm keeping in check\nShe was a bad-bad, nevertheless\nCallin' it quits now, baby, I'm a wreck\nCrash at my place, baby, you're a wreck\nThinkin' in a bad way, losin' your grip\nScreamin' at my face, baby, don't trip\nSomeone took a big L, don't know how that felt\nLookin' at you sideways, party on tilt\nOoh-ooh, some things you just can't refuse\nShe wanna ride me like a cruise and I'm not tryna lose\n\n[Chorus: Swae Lee]\nThen you're left in the dust, unless I stuck by ya\nYou're a sunflower, I think your love would be too much\nOr you'll be left in the dust, unless I stuck by ya\nYou're the sunflower, you're the sunflower\n\n[Verse 2: Post Malone]\nEvery time I'm leavin' on ya (Ooh)\nYou don't make it easy, no (No, no)\nWish I could be there for ya (Ooh)\nGive me a reason to, oh (Oh)\nEvery time I'm walkin' out (Oh)\nI can hear you tellin' me to turn around (Oh, oh)\nFightin' for my trust and you won't back down (No)\nEven if we gotta risk it all right now, oh (Now)\nI know you're scared of the unknown (Known)\nYou don't wanna be alone (Alone)\nI know I always come and go (And go)\nBut it's out of my control\n\n[Chorus: Post Malone]\nAnd you'll be left in the dust, unless I stuck by ya\nYou're the sunflower, I think your love would be too much\nOr you'll be left in the dust, unless I stuck by ya\nYou're the sunflower, you're the sunflower (Yeah)"
+                lyrics_source: Genius
+      responses:
+       201:
+         description: Success
+       404:
+         description: Not found
+       500:
+         description: Failed to fetch song info
+    delete:
+      tags:
+        - "Songs"
+      summary: "Used to update a song based on its id"
+      parameters: 
+        - in: path
+          name: songId
+          required:  true
+          description: This field is a string that matches the song id. A song id is a alphanumerical string that is of length 12 or 24. 
+          schema:
+            type: string
+      responses:
+       201:
+         description: Success
+       404:
+         description: Not found
+       500:
+         description: Failed to fetch song info

@@ -1,0 +1,36 @@
+/song/
+
+id		objectId
+Song Name	String
+Genre		String
+Album		String
+Artist		String
+Duration	Integer
+Lyrics		Huge String
+Lyrics Source	String
+
+/song/:songName
+
+id		objectId
+Song Name	String
+Genre		String
+Album		String
+Artist		String
+Duration	Integer
+Lyrics		Huge String
+Lyrics Source	String
+
+
+/album/
+
+id		objectId
+Album Name	String
+Songs		Array of Strings
+Genre		String
+
+/album/:albumName
+
+id		objectId
+Album Name	String
+Songs		Array of Strings
+Genre		String

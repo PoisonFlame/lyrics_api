@@ -1,0 +1,13 @@
+.topbar-wrapper img[alt="Swagger UI"]{
+    visibility: hidden;
+}
+
+.topbar-wrapper span:after {
+    content: 'mylogo';
+    color: #fff;
+    visibility: visible;
+    display: block;
+    position: absolute;
+    padding: 5px;
+    top: 2px;
+}
