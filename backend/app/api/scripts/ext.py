@@ -12,6 +12,7 @@ import os
 import argparse
 from urllib.request import Request, urlopen
 import requests
+import jwt
 
 parser = argparse.ArgumentParser(description='Genius Scraper for LyricsAPI')
 parser.add_argument('-k', help='Add the search keyword, e.g. song name.', required=True)
@@ -80,6 +81,7 @@ def getLyrics(id,url):
 def uploadToDB():
   for song in songs:
     s = json.dumps(song)
+    secret = os.environ['JWT_KEY']
     req = requests.post("https://api.rpsh.me/songs", json=json.loads(s))
     print(s)
     print(req.json())

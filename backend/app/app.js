@@ -10,6 +10,7 @@ const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/order');
 const songRoutes = require('./api/routes/song');
 const userRoutes = require('./api/routes/user');
+const blacklistRoutes = require('./api/routes/blacklist');
 const swaggerJSON = require('./api/docs/swagger.json');
 const swaggerOptions = {
     definition: {
@@ -62,6 +63,7 @@ app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
 app.use('/songs', songRoutes);
 app.use('/user', userRoutes);
+app.use('/blacklist', blacklistRoutes);
 
 app.use((req,res,next)=> {
     const error = new Error('Not found');

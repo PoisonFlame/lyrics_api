@@ -3,14 +3,28 @@
 </template>
 
 <script>
-import router from '../../router'
+import router from '../../router';
+import axios from 'axios';
 
-localStorage.removeItem('user');
-router.go('/');
+let user = JSON.parse(localStorage.getItem('user'));
+
+axios
+    .post('https://api.rpsh.me/v1/blacklist/add', {
+        token: user.token
+    })
+    .then(res => {
+        localStorage.removeItem('user');
+        router.go('/');
+    })
+    .catch(err => {
+        localStorage.removeItem('user');
+        router.go('/');
+    });
+
+// localStorage.removeItem('user');
+// router.go('/');
 
 export default {
-    data() {
-
-    }
-}
+    data() {}
+};
 </script>

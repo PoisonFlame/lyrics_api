@@ -1,18 +1,18 @@
 <template>
-<div id="app">
+  <div id="app">
     <tutorial-header />
     <cv-content id="#main-content">
-        <router-view />
+      <router-view />
     </cv-content>
-</div>
+  </div>
 </template>
 
 <script>
-import TutorialHeader from "./components/TutorialHeader";
+import TutorialHeader from './components/TutorialHeader';
 export default {
-    name: "App",
-    components: {
-        TutorialHeader
-    }
+  name: 'App',
+  components: {
+    TutorialHeader
+  }
 };
 </script>

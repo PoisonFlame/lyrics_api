@@ -1,16 +1,16 @@
 <template>
-<app-content></app-content>
+  <app-content></app-content>
 </template>
 
 <style lang="scss">
-@import "./styles/carbon";
+@import './styles/carbon';
 </style>
 
 <script>
-import AppContent from "./AppContent.vue";
+import AppContent from './AppContent.vue';
 export default {
-    components: {
-        AppContent
-    }
+  components: {
+    AppContent
+  }
 };
 </script>

@@ -1,12 +1,12 @@
 <template>
 <div>
-    <h1 class='title'>Dashboard </h1>
+    <h1 class="title">Dashboard</h1>
     <cv-accordion ref="acc">
         <cv-accordion-item open>
             <template slot="title">Your Info</template>
             <template slot="content">
                 <p>
-                    <b>Name</b>: {{ name }} <br><br>
+                    <b>Name</b>: {{ name }} <br /><br />
                     <b>Email</b>: {{ email }}
                 </p>
             </template>
@@ -14,10 +14,10 @@
         <cv-accordion-item open>
             <template slot="title">API Key Info </template>
             <template slot="content">
-
-                - This API key is to be used responsibly.<br>
-                - Please keep this key stored safely away from the public to disallow unauthorized access.<br>
-                - If key is abused, it may be taken away at any given time.<br>
+                - This API key is to be used responsibly.<br />
+                - Please keep this key stored safely away from the public to disallow
+                unauthorized access.<br />
+                - If key is abused, it may be taken away at any given time.<br />
                 - If your key gets compromised, please regenerate a new key.
                 <div class="key-input">
                     <cv-text-input class="api" id="apikeyinput" label="API Key:" helper-text="" placeholder="" v-model="apiKey" type="password" :password-visible="keyVisible" readonly passwordHideLabel="Hide API Key" passwordShowLabel="Show API Key">
@@ -39,10 +39,10 @@
                     Rate Limits
                 </div>
                 <div>
-                    20 requests every 1 second(s) <br>
+                    20 requests every 1 second(s) <br />
                     100 requests every 2 minutes(s)
                 </div>
-                <div class="generateKey">
+                <div v-if="!hasKey" class="generateKey">
                     <cv-button kind="danger" style="margin-right:5px;" @click="generateKey">
                         Generate API Key
                     </cv-button>
@@ -53,18 +53,22 @@
             <template slot="title">Change Password</template>
             <template slot="content">
                 <div style="color:#da1e28;">
-                    Note: Changing password invalidates your current API Key. A new key will need to be generated. <br><br>
+                    Note: Changing password invalidates your current API Key. A new key
+                    will need to be generated. <br /><br />
                 </div>
                 <cv-text-input class="api" label="Current password" helper-text="" placeholder="" v-model="oldPassword" type="password" passwordHideLabel="Hide Password" passwordShowLabel="Show Password">
-                    <template v-if="!oldPasswordValid" slot="invalid-message">{{ oldPasswordError }}</template>
+                    <template v-if="!oldPasswordValid" slot="invalid-message">{{
+              oldPasswordError
+            }}</template>
                 </cv-text-input>
                 <cv-text-input class="api" label="New password" helper-text="" placeholder="" v-model="newPassword" type="password" passwordHideLabel="Hide Password" passwordShowLabel="Show Password">
-                    <template v-if="!newPasswordValid" slot="invalid-message"> {{ passwordError }}</template>
+                    <template v-if="!newPasswordValid" slot="invalid-message">
+                        {{ passwordError }}</template>
                 </cv-text-input>
                 <cv-text-input class="api" label="Confirm new password" helper-text="" placeholder="" v-model="confirmNewPassword" type="password" passwordHideLabel="Hide Password" passwordShowLabel="Show Password">
                     <template v-if="!confirmNewPasswordValid" slot="invalid-message">Passwords do not match</template>
                 </cv-text-input>
-                <br>
+                <br />
                 <cv-button kind="danger" class="btn_change_password" @click="changePassword">
                     Change password
                 </cv-button>
@@ -74,8 +78,10 @@
             <template slot="title">Delete Account</template>
             <template slot="content">
                 <div style="color:#f4f4f4;">
-                    Once you delete your account, there is no going back. Please be certain. <br>
-                    With the deletion of your account, your API key will be invalidated and you will need to make a new account to re-use the API.<br><br>
+                    Once you delete your account, there is no going back. Please be
+                    certain. <br />
+                    With the deletion of your account, your API key will be invalidated
+                    and you will need to make a new account to re-use the API.<br /><br />
                     <div class="del_acc">
                         <cv-button kind="danger" class="btn_delete_account" @click="deleteAccount">
                             Delete Account
@@ -89,11 +95,13 @@
         <template slot="title">Change Password</template>
         <template slot="content">
             <p>
-                Changing password invalidates your current API Key. <br>A new key will need to be generated. <br> <br>
+                Changing password invalidates your current API Key. <br />A new key
+                will need to be generated. <br />
+                <br />
                 Are you sure you want to change your password?
             </p>
         </template>
-        <template slot="secondary-button" style='border-radius:0px;'>Cancel</template>
+        <template slot="secondary-button" style="border-radius:0px;">Cancel</template>
         <template slot="primary-button">Change password</template>
     </cv-modal>
 
@@ -101,19 +109,21 @@
         <template slot="title">Delete Account</template>
         <template slot="content">
             <p>
-                Once you delete your account, there is no going back. Please be certain. <br>
-                With the deletion of your account, your API key will be invalidated and you will need to make a new account to re-use the API. <br><br>
+                Once you delete your account, there is no going back. Please be
+                certain. <br />
+                With the deletion of your account, your API key will be invalidated
+                and you will need to make a new account to re-use the API.
+                <br /><br />
                 Please enter your password if you wish to delete your account.
                 <cv-text-input class="api" label="Password" helper-text="" placeholder="" v-model="delPassword" type="password" passwordHideLabel="Hide Password" passwordShowLabel="Show Password">
-                    <template v-if="!delPasswordValid" slot="invalid-message"> {{ delPasswordError }}</template>
+                    <template v-if="!delPasswordValid" slot="invalid-message">
+                        {{ delPasswordError }}</template>
                 </cv-text-input>
-
             </p>
         </template>
-        <template slot="secondary-button" style='border-radius:0px;'>Cancel</template>
+        <template slot="secondary-button" style="border-radius:0px;">Cancel</template>
         <template slot="primary-button">Delete account</template>
     </cv-modal>
-
 </div>
 </template>
 
@@ -194,7 +204,7 @@ html {
     .api_expiry {
         text-align: center;
         padding-left: 0vw;
-        font-size: 1.0rem;
+        font-size: 1rem;
         color: #da1e28;
     }
 
@@ -207,7 +217,6 @@ html {
     .del_acc {
         text-align: center;
     }
-
 }
 
 .bx--btn--danger {
@@ -224,7 +233,7 @@ html {
 <script>
 import {
     authInfo
-} from "../../helpers/auth-info";
+} from '../../helpers/auth-info';
 
 import axios from 'axios';
 import router from '../../router';
@@ -235,9 +244,9 @@ export default {
     components: {},
     data() {
         return {
-            name: authInfo().firstName + " " + authInfo().lastName,
+            name: authInfo().firstName + ' ' + authInfo().lastName,
             email: authInfo().email,
-            apiKey: 'None',
+            apiKey: 'Bone',
             keyVisible: false,
             copyLabel: 'Copy',
             apiKeyExpiry: 'July 1st 2020',
@@ -255,43 +264,79 @@ export default {
             delPasswordValid: false,
             oldPasswordError: '',
             showApiKeyText: '',
-            apiKeyExpiryStatus: true
-        }
+            apiKeyExpiryStatus: true,
+            hasKey: false
+        };
     },
     watch: {
-        'oldPassword': function (val) {
+        oldPassword: function (val) {
             this.fnc_oldPasswordValid(val);
         },
-        'newPassword': function (val) {
+        newPassword: function (val) {
             this.fnc_passwordValid(val);
         },
-        'confirmNewPassword': function (val) {
+        confirmNewPassword: function (val) {
             this.fnc_confirmPasswordValid(val);
         },
-        'keyVisible': function (val) {
+        keyVisible: function (val) {
             if (this.keyVisible === true) {
                 this.showApiKeyText = 'Hide';
             } else {
                 this.showApiKeyText = 'Show';
             }
         },
-        'delPassword': function (val) {
+        delPassword: function (val) {
             this.fnc_delPasswordValid(val);
+        },
+        apiKey: function(val){
+            if (val === 'None'){
+                this.hasKey = false;
+            }else{
+                this.hasKey = true;
+            }
         }
     },
     mounted: function () {
-        (document.getElementsByClassName("bx--text-input--password__visibility__toggle bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--bottom bx--tooltip--align-center")[0].setAttribute("tabIndex", "-1"));
-        (document.getElementsByClassName("bx--text-input--password__visibility__toggle bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--bottom bx--tooltip--align-center")[1].setAttribute("tabIndex", "-1"));
-        (document.getElementsByClassName("bx--text-input--password__visibility__toggle bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--bottom bx--tooltip--align-center")[2].setAttribute("tabIndex", "-1"));
-        (document.getElementsByClassName("bx--text-input--password__visibility__toggle bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--bottom bx--tooltip--align-center")[3].setAttribute("tabIndex", "-1"));
-        (document.getElementsByClassName("bx--text-input--password__visibility__toggle bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--bottom bx--tooltip--align-center")[4].setAttribute("tabIndex", "-1"));
+        document
+            .getElementsByClassName(
+                'bx--text-input--password__visibility__toggle bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--bottom bx--tooltip--align-center'
+            )[0]
+            .setAttribute('tabIndex', '-1');
+        document
+            .getElementsByClassName(
+                'bx--text-input--password__visibility__toggle bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--bottom bx--tooltip--align-center'
+            )[1]
+            .setAttribute('tabIndex', '-1');
+        document
+            .getElementsByClassName(
+                'bx--text-input--password__visibility__toggle bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--bottom bx--tooltip--align-center'
+            )[2]
+            .setAttribute('tabIndex', '-1');
+        document
+            .getElementsByClassName(
+                'bx--text-input--password__visibility__toggle bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--bottom bx--tooltip--align-center'
+            )[3]
+            .setAttribute('tabIndex', '-1');
+        document
+            .getElementsByClassName(
+                'bx--text-input--password__visibility__toggle bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--bottom bx--tooltip--align-center'
+            )[4]
+            .setAttribute('tabIndex', '-1');
         this.apiKey = authInfo().apiKey;
         //Convert Date to readable format.
         let date = new Date(authInfo().apiKeyExpiry);
-        this.apiKeyExpiry = date.toString().split(':')[0].substring(0, date.toString().split(':')[0].length - 3);
+        this.apiKeyExpiry = date
+            .toString()
+            .split(':')[0]
+            .substring(0, date.toString().split(':')[0].length - 3);
         if (this.apiKey === 'None') {
             this.keyVisible = true;
             this.apiKeyExpiryStatus = false;
+            this.hasKey = false;
+            console.log("hasKey is false");
+        }else{
+            this.hasKey = true;
+            console.log("hasKey is true");
         }
     },
     methods: {
@@ -299,7 +344,6 @@ export default {
             this.keyVisible = !this.keyVisible;
         },
         async copyAPIKey() {
-
             var dummy = document.createElement('input'),
                 text = this.apiKey;
             document.body.appendChild(dummy);
@@ -311,7 +355,6 @@ export default {
             this.copyLabel = 'Copied';
             await new Promise(resolve => setTimeout(resolve, 10000));
             this.copyLabel = 'Copy';
-
         },
         fnc_oldPasswordValid(password) {
             if (password.length === 0) {
@@ -348,13 +391,17 @@ export default {
             }
         },
         generateKey() {
-            console.log("Generating Key");
+            console.log('Generating Key');
         },
         changePassword() {
             this.fnc_oldPasswordValid(this.oldPassword);
             this.fnc_confirmPasswordValid(this.confirmNewPassword);
             this.fnc_passwordValid(this.newPassword);
-            if (this.oldPasswordValid && this.newPasswordValid && this.confirmNewPasswordValid) {
+            if (
+                this.oldPasswordValid &&
+                this.newPasswordValid &&
+                this.confirmNewPasswordValid
+            ) {
                 //Check whether password is correct
                 //Current password incorrect error should be displayed
                 const config = {
@@ -362,15 +409,19 @@ export default {
                         Authorization: 'Bearer ' + authInfo().token
                     }
                 };
-                axios.post('https://api.rpsh.me/v1/user/change_password', {
-                        password: this.oldPassword
-                    }, config)
+                axios
+                    .post(
+                        'https://api.rpsh.me/v1/user/change_password', {
+                            password: this.oldPassword
+                        },
+                        config
+                    )
                     .then(res => {
                         // Check status for 200 or 400
                         if (res.status === 201) {
                             if (res.data.passCheck === 'Valid Pass') {
                                 this.change_pwd_modal = true;
-                                this.oldPasswordError = "Your current password is required";
+                                this.oldPasswordError = 'Your current password is required';
                                 this.oldPasswordValid = true;
                             } else {
                                 this.oldPasswordError = "Password doesn't match our records";
@@ -384,7 +435,6 @@ export default {
                     .catch(err => {
                         this.oldPasswordError = "Password doesn't match our records";
                         this.oldPasswordValid = false;
-
                     });
             }
         },
@@ -394,28 +444,34 @@ export default {
                     Authorization: 'Bearer ' + authInfo().token
                 }
             };
-            axios.post('https://api.rpsh.me/v1/user/change_password', {
-                    password: this.oldPassword,
-                    newPassword: this.newPassword
-                }, config)
+            axios
+                .post(
+                    'https://api.rpsh.me/v1/user/change_password', {
+                        password: this.oldPassword,
+                        newPassword: this.newPassword
+                    },
+                    config
+                )
                 .then(res => {
                     // Check status for 200 or 400
                     if (res.status === 201) {
                         if (res.data.message === 'Password updated') {
-                            alert("Password updated.")
-                            router.go("/Dashboard");
+                            alert('Password updated.');
+                            router.go('/Dashboard');
                         } else {
-                            alert("An error occured changing password. Please try again later");
-                            router.go("/Dashboard");
+                            alert(
+                                'An error occured changing password. Please try again later'
+                            );
+                            router.go('/Dashboard');
                         }
                     } else {
-                        alert("An error occured changing password. Please try again later");
-                        router.go("/Dashboard");
+                        alert('An error occured changing password. Please try again later');
+                        router.go('/Dashboard');
                     }
                 })
                 .catch(err => {
-                    alert("An error occured changing password. Please try again later");
-                    router.go("/Dashboard");
+                    alert('An error occured changing password. Please try again later');
+                    router.go('/Dashboard');
                 });
         },
         async cancelChangePassword() {
@@ -446,31 +502,36 @@ export default {
                         Authorization: 'Bearer ' + authInfo().token
                     }
                 };
-                axios.post('https://api.rpsh.me/v1/user/change_password', {
-                        password: this.delPassword
-                    }, config)
+                axios
+                    .post(
+                        'https://api.rpsh.me/v1/user/change_password', {
+                            password: this.delPassword
+                        },
+                        config
+                    )
                     .then(res => {
                         // Check status for 200 or 400
                         if (res.status === 201) {
                             if (res.data.passCheck === 'Valid Pass') {
-                                this.delPasswordError = "Your current password is required";
+                                this.delPasswordError = 'Your current password is required';
                                 this.delPasswordValid = true;
-                                axios.delete('https://api.rpsh.me/v1/user/delete', config)
+                                axios
+                                    .delete('https://api.rpsh.me/v1/user/delete', config)
                                     .then(res => {
                                         if (res.status === 200) {
                                             if (res.data.message === 'User Deleted') {
                                                 localStorage.removeItem('user');
                                                 alert('Your account has been deleted successfully.');
-                                                router.go("/");
+                                                router.go('/');
                                             } else {
-                                                alert("Error deleting account. Try again later.");
-                                                router.go("/Dashboard");
+                                                alert('Error deleting account. Try again later.');
+                                                router.go('/Dashboard');
                                             }
                                         }
                                     })
                                     .catch(err => {
-                                        alert("Error deleting account. Try again later.");
-                                        router.go("/Dashboard");
+                                        alert('Error deleting account. Try again later.');
+                                        router.go('/Dashboard');
                                     });
                             } else {
                                 this.delPasswordError = "Password doesn't match our records";
@@ -484,7 +545,6 @@ export default {
                     .catch(err => {
                         this.delPasswordError = "Password doesn't match our records";
                         this.delPasswordValid = false;
-
                     });
             }
         },

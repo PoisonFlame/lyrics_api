@@ -67,6 +67,7 @@ exports.user_login = (req,res,next) => {
                     lastName: user[0].lastName,
                     userId: user[0]._id,
                     role: user[0].role,
+                    type: "login",
                     apiKey: user[0].apiKey,
                     apiKeyExpiry: user[0].apiKeyExpiry
                 }, 
