@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const jwt = require('jsonwebtoken');
 
+
 export function authInfo() {
   let user = JSON.parse(localStorage.getItem('user'));
 

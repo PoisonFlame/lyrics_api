@@ -6,16 +6,36 @@
       "title": "Lyrics API",
       "contact": {
         "name": "Rudra Sharma",
-        "email": "lyricsapi@rpsh.me"
+        "email": "lyrics@rpsh.me"
       },
       "license": {
         "name": "Apache 2.0",
         "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
       }
     },
+    "servers": [
+      {
+      "url" : "https://lyrics.rpsh.me/api/",
+      "description" : "Lyrics API"
+      }
+    ],
+    "components": {
+      "securitySchemes" : {
+        "bearerAuth" : {
+          "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+        }
+      }
+    },
     "paths": {
       "/songs": {
         "get": {
+          "security": [
+            {
+               "bearerAuth": []
+            }
+         ],
           "tags": [
             "Songs"
           ],
@@ -34,6 +54,11 @@
           }
         },
         "post": {
+          "security": [
+            {
+               "bearerAuth": []
+            }
+         ],
           "tags": [
             "Songs"
           ],
@@ -104,6 +129,11 @@
       },
       "/songs/by-name/{songName}": {
         "get": {
+          "security": [
+            {
+               "bearerAuth": []
+            }
+         ],
           "tags": [
             "Songs"
           ],
@@ -134,6 +164,11 @@
       },
       "/songs/by-album/{albumName}": {
         "get": {
+          "security": [
+            {
+               "bearerAuth": []
+            }
+         ],
           "tags": [
             "Songs"
           ],
@@ -164,6 +199,11 @@
       },
       "/songs/by-artist/{artistName}": {
         "get": {
+          "security": [
+            {
+               "bearerAuth": []
+            }
+         ],
           "tags": [
             "Songs"
           ],
@@ -194,6 +234,11 @@
       },
       "/songs/by-id/{songId}": {
         "get": {
+          "security": [
+            {
+               "bearerAuth": []
+            }
+         ],
           "tags": [
             "Songs"
           ],
@@ -222,6 +267,11 @@
           }
         },
         "patch": {
+          "security": [
+            {
+               "bearerAuth": []
+            }
+         ],
           "tags": [
             "Songs"
           ],
@@ -301,6 +351,11 @@
           }
         },
         "delete": {
+          "security": [
+            {
+               "bearerAuth": []
+            }
+         ],
           "tags": [
             "Songs"
           ],

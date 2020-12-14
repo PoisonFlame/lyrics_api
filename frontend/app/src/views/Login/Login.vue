@@ -155,11 +155,12 @@ export default {
       this.fnc_emailValid(this.email);
       if (this.passwordValid && this.emailValid) {
         axios
-          .post('https://api.rpsh.me/v1/user/login', {
+          .post('api/user/login', {
             email: this.email,
             password: this.password
           })
           .then(res => {
+            console.log(res.headers)
             // Check status for 200 or 400
             if (res.status != 200) {
               //Password incorrect show error saying email or password incorrect.

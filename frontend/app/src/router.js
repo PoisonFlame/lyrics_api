@@ -72,7 +72,6 @@ router.beforeEach((to, from, next) => {
   if (loggedIn && nonAuthPages.includes(to.path)) {
     return next('/');
   }
-
   next();
 });
 

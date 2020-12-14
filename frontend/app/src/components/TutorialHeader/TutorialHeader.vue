@@ -8,10 +8,10 @@
       API
     </cv-header-name>
     <cv-header-nav aria-label="Nav">
-      <cv-header-menu-item href="/v1/docs">
+      <cv-header-menu-item href="api/docs/">
         Documentation
       </cv-header-menu-item>
-      <cv-header-menu-item href="/status">
+      <cv-header-menu-item v-if="false" href="/status">
         Status
       </cv-header-menu-item>
     </cv-header-nav>
@@ -19,10 +19,10 @@
       <cv-side-nav id="side-nav" fixed>
         <cv-side-nav-items>
           <cv-header-side-nav-items>
-            <cv-header-menu-item href="/v1/Docs">
+            <cv-header-menu-item href="api/docs/">
               Documentation
             </cv-header-menu-item>
-            <cv-header-menu-item href="/status">
+            <cv-header-menu-item v-if="false" href="/status">
               Status
             </cv-header-menu-item>
           </cv-header-side-nav-items>

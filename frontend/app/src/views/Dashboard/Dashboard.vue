@@ -39,12 +39,12 @@
                     Rate Limits
                 </div>
                 <div>
-                    20 requests every 1 second(s) <br />
-                    100 requests every 2 minutes(s)
+                    20 requests every 1 second(s) (Under Construction)<br />
+                    100 requests every 2 minutes(s) (Under Construction)
                 </div>
-                <div v-if="!hasKey" class="generateKey">
+                <div class="generateKey">
                     <cv-button kind="danger" style="margin-right:5px;" @click="generateKey">
-                        Generate API Key
+                        Generate New Key
                     </cv-button>
                 </div>
             </template>
@@ -246,7 +246,7 @@ export default {
         return {
             name: authInfo().firstName + ' ' + authInfo().lastName,
             email: authInfo().email,
-            apiKey: 'Bone',
+            apiKey: 'None',
             keyVisible: false,
             copyLabel: 'Copy',
             apiKeyExpiry: 'July 1st 2020',
@@ -263,8 +263,8 @@ export default {
             delPasswordError: '',
             delPasswordValid: false,
             oldPasswordError: '',
-            showApiKeyText: '',
-            apiKeyExpiryStatus: true,
+            showApiKeyText: 'Show',
+            apiKeyExpiryStatus: false,
             hasKey: false
         };
     },
@@ -322,7 +322,7 @@ export default {
                 'bx--text-input--password__visibility__toggle bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--bottom bx--tooltip--align-center'
             )[4]
             .setAttribute('tabIndex', '-1');
-        this.apiKey = authInfo().apiKey;
+        this.apiKey = authInfo().token;
         //Convert Date to readable format.
         let date = new Date(authInfo().apiKeyExpiry);
         this.apiKeyExpiry = date
@@ -392,6 +392,7 @@ export default {
         },
         generateKey() {
             console.log('Generating Key');
+            alert("Under Construction. Please use the key as shown above which is regenerated on each login.")
         },
         changePassword() {
             this.fnc_oldPasswordValid(this.oldPassword);
@@ -411,7 +412,7 @@ export default {
                 };
                 axios
                     .post(
-                        'https://api.rpsh.me/v1/user/change_password', {
+                        'api/user/change_password', {
                             password: this.oldPassword
                         },
                         config
@@ -446,7 +447,7 @@ export default {
             };
             axios
                 .post(
-                    'https://api.rpsh.me/v1/user/change_password', {
+                    'api/user/change_password', {
                         password: this.oldPassword,
                         newPassword: this.newPassword
                     },
@@ -504,7 +505,7 @@ export default {
                 };
                 axios
                     .post(
-                        'https://api.rpsh.me/v1/user/change_password', {
+                        'api/user/change_password', {
                             password: this.delPassword
                         },
                         config
@@ -516,7 +517,7 @@ export default {
                                 this.delPasswordError = 'Your current password is required';
                                 this.delPasswordValid = true;
                                 axios
-                                    .delete('https://api.rpsh.me/v1/user/delete', config)
+                                    .delete('api/user/delete', config)
                                     .then(res => {
                                         if (res.status === 200) {
                                             if (res.data.message === 'User Deleted') {

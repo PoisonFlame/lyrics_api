@@ -9,7 +9,7 @@ import axios from 'axios';
 let user = JSON.parse(localStorage.getItem('user'));
 
 axios
-    .post('https://api.rpsh.me/v1/blacklist/add', {
+    .post('api/blacklist/add', {
         token: user.token
     })
     .then(res => {

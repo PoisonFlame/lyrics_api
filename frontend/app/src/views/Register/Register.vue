@@ -325,7 +325,7 @@ export default {
         this.lastNameValid
       ) {
         axios
-          .post('https://api.rpsh.me/v1/user/signup', {
+          .post('api/user/signup', {
             email: this.email,
             password: this.password,
             firstName: this.firstName,

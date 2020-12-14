@@ -188,7 +188,7 @@ export default {
   },
   methods: {
     signup() {
-      router.go('/Register');
+      router.push('/Register');
     },
     dashboard() {
       router.go('/Dashboard');
