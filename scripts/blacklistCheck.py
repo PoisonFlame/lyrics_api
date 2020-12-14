@@ -10,7 +10,7 @@ payload = {
     'exp': datetime.utcnow() + timedelta(minutes=1)
 }
 
-secret = 'secret11212Ca1p2r' #os.environ['JWT_KEY']
+secret = os.environ['JWT_KEY']
 
 encoded = jwt.encode(payload, secret, algorithm='HS256')
 
